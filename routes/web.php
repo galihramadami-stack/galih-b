@@ -1,6 +1,9 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MyController;
+use App\Http\Controllers\PostController;
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -59,12 +62,50 @@ Route::get('/grading/{nama?}/{nilai?}', function ($nama = 'iman', $nilai = 96) {
     return view('grading', compact('nama', 'nilai'));
 });
 
-Route::get('nilai-ratarata', function () {
-    $siswa = [
-        ['nama' => 'asep', 'nilai' => 85],
-        ['nama' => 'mono', 'nilai' => 70],
-        ['nama' => 'gimen', 'nilai' => 95],
-    ];
-    return view('ratarata', compact('siswa'));
+Route::get('test-model', function () {
+    
+    $data = App\Models\Post::all();
+    return $data;
 });
 
+Route::get('create-data',function(){
+
+    $data = App\Models\Post::create([
+        'title' =>'kelas',
+        'content' =>'lorem ipsum',
+    ]);
+
+    return $data;
+
+});
+
+Route::get('show-data/{id}', function ($id) {
+    $data = App\Models\Post::find($id);
+    return $data;
+});
+
+Route::get('edit-data/{id}', function($id) {
+    $data          = App\Models\Post::find($id);
+    $data->title   = "Membangun Project dengan Laravel";
+    $data->content = "Ipsum Lorem";
+    $data->save();
+    return $data;
+});
+Route::get('delete-data/{id}', function ($id) {
+    $data          = App\Models\Post::find($id);
+    $data->delete();
+    return redirect('test-model');
+});
+Route::get('search/{cari}',function ($query) {
+    $data = App\Models\Post::where('title', 'like', '%' .$query . '%')->get();
+    return $data;
+});
+
+Route::get('greetings',[MyController::class, 'hello']);
+Route::get('student', [MyController::class, 'siswa']);
+Route::get('post', [PostController::class, 'index']);
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
