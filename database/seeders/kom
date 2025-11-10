@@ -1,3 +1,0 @@
-produk buat 1 migration dan seeder baru sesuai dengan tema yang sudah di tentukan isi masing-masing 5 field dan buat minimal 5 sample data data type migrate
- string
-  integer date boolean text float

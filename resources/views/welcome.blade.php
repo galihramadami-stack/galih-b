@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    selamat datang di galih company
+                    Selamat datang di New york
                 </div>
             </div>
         </div>
