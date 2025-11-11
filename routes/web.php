@@ -5,6 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\RelasiController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\ProdukController;
 
 // controller harus di import / di panggil
 

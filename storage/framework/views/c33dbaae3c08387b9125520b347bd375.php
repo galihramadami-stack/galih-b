@@ -7,11 +7,11 @@
             <div class="card">
                 <div class="card-header">
                     <div class="float-start">
-                        <?php echo e(__('Wali')); ?>
+                        <?php echo e(__('produk')); ?>
 
                     </div>
                     <div class="float-end">
-                        <a href="<?php echo e(route('wali.create')); ?>" class="btn btn-sm btn-outline-primary">Tambah Data</a>
+                        <a href="<?php echo e(route('produk.create')); ?>" class="btn btn-sm btn-outline-primary">Tambah Data</a>
                     </div>
                 </div>
 
@@ -21,25 +21,28 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Wali</th>
-                                    <th>Nama mMahasiswa</th>
+                                    <th>Nama Produk</th>
+                                    <th>Harga</th>
+                                    <th>Stok</th>
+
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $no = 1; ?>
-                                <?php $__empty_1 = true; $__currentLoopData = $walis; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                <?php $__empty_1 = true; $__currentLoopData = $produk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                 <tr>
                                     <td><?php echo e($no++); ?></td>
-                                    <td><?php echo e($data->nama); ?></td>
-                                    <td><?php echo e($data->mahasiswa->nama); ?></td>
+                                    <td><?php echo e($data->nama_produk); ?></td>
+                                    <td><?php echo $data->harga; ?></td>
+                                    <td><?php echo e($data->stok); ?></td>
                                     <td>
-                                        <form action="<?php echo e(route('wali.destroy', $data->id)); ?>" method="POST">
+                                        <form action="<?php echo e(route('produk.destroy', $data->id)); ?>" method="POST">
                                             <?php echo csrf_field(); ?>
                                             <?php echo method_field('DELETE'); ?>
-                                            <a href="<?php echo e(route('wali.show', $data->id)); ?>"
+                                            <a href="<?php echo e(route('produk.show', $data->id)); ?>"
                                                 class="btn btn-sm btn-outline-dark">Show</a> |
-                                            <a href="<?php echo e(route('wali.edit', $data->id)); ?>"
+                                            <a href="<?php echo e(route('produk.edit', $data->id)); ?>"
                                                 class="btn btn-sm btn-outline-success">Edit</a> |
                                             <button type="submit" onsubmit="return confirm('Are You Sure ?');"
                                                 class="btn btn-sm btn-outline-danger">Delete</button>
@@ -55,6 +58,8 @@
                                 <?php endif; ?>
                             </tbody>
                         </table>
+                        <?php echo $produk->withQueryString()->links('pagination::bootstrap-4'); ?>
+
                     </div>
                 </div>
             </div>
@@ -62,4 +67,4 @@
     </div>
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laravel projek\laravelproject\resources\views/wali/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\laravel projek\laravelproject\resources\views/latihan/produk/index.blade.php ENDPATH**/ ?>

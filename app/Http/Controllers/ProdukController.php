@@ -10,12 +10,12 @@ class ProdukController extends Controller
     public function index()
     {
         $produk = Produk::latest()->paginate(5);
-        return view('produk.index', compact('produk'));
+        return view('latihan.produk.index', compact('produk'));
     }
 
     public function create()
     {
-        return view('produk.create');
+        return view('latihan.produk.create');
     }
 
     public function store(Request $request)
@@ -47,13 +47,13 @@ class ProdukController extends Controller
     public function show($id)
     {
         $produk = Produk::findOrFail($id);
-        return view('produk.show', compact('produk'));
+        return view('latihan.produk.show', compact('produk'));
     }
 
     public function edit($id)
     {
         $produk = Produk::findOrFail($id);
-        return view('produk.edit', compact('produk'));
+        return view('latihan.produk.edit', compact('produk'));
     }
 
     public function update(Request $request, $id)

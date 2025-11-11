@@ -5,17 +5,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Produk extends Model
 {
-    protected $fillable = ['nama', 'deskripsi', 'harga', 'image'];
-    protected $visible  = ['nama', 'deskripsi', 'harga', 'image'];
+    protected $fillable = ['nama_produk', 'stok', 'harga'];
+    protected $visible  = ['nama_produk', 'stok', 'harga'];
 
-    public function transaksi()
+    public function transaksis()
     {
-// membuat relasi many-to-many dengan model Transaksi melalui tabel pivot detail_transaksis
-// dan menyertakan kolom tambahan jumlah dan subtotal dari tabel pivot
-        return $this->belongsToMany(Transaksi::class, 'detail_transaksis', 'id_produk', 'id_transaksi')
-                    ->withPivot('jumlah', 'subtotal')
+        return $this->belongsToMany(Transaksi::class, 'detail_transaksi', 'id_produk', 'id_transaksi')
+                    ->withPivot('jumlah', 'sub_total')
                     ->withTimestamps();
-
-}
-
+    }
 }

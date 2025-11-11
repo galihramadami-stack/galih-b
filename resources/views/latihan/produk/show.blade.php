@@ -12,14 +12,14 @@
 
                 <div class="card-body">
                     @if ($produk->image)
-                    <img src="{{ Storage::url($produk->image)  }}" class="w-100 rounded mb-3" alt="{{ $produk->nama }}">
+                        <img src="{{ Storage::url($produk->image) }}" class="w-100 rounded mb-3" alt="{{ $produk->nama_produk }}">
                     @else
-                    <img src="{{ asset('images/no-image.png') }}" class="w-100 rounded mb-3" alt="No Image">
+                        <img src="{{ asset('images/no-image.png') }}" class="w-100 rounded mb-3" alt="No Image">
                     @endif
 
-                    <h4 class="fw-bold">{{ $produk->nama }}</h4>
+                    <h4 class="fw-bold">{{ $produk->nama_produk }}</h4>
                     <p class="mt-2 mb-1">Harga: <strong>Rp{{ number_format($produk->harga, 0, ',', '.') }}</strong></p>
-                    <p class="mt-2">{!! $produk->deskripsi !!}</p>
+                    <p class="mt-2">Stok: <strong>{{ $produk->stok }}</strong></p>
                 </div>
             </div>
         </div>
